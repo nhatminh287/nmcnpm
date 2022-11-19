@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- JavaScript Bundle with Popper -->
+        <script src="Login.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <link href="Login.css" rel="stylesheet">
@@ -9,6 +11,8 @@
     </head>
     <body>
         <div class="container">
+            <span class="text-center">LOGO</span>
+            <span class="text-center">CANTEEN-HCMUS</span>
             <h1 class="text-center">Login</h1>
             <div class="tab-content">
                 <form>
@@ -24,24 +28,9 @@
                     <label class="form-label" for="loginPassword">Password</label>
                     </div>
             
-                    <!-- 2 column grid layout -->
-                    <div class="row mb-4">
-                    <div class="col-md-6 d-flex justify-content-center">
-                        <!-- Checkbox -->
-                        <div class="form-check mb-3 mb-md-0">
-                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                        <label class="form-check-label" for="loginCheck"> Remember me </label>
-                        </div>
-                    </div>
-            
-                    <div class="col-md-6 d-flex justify-content-center">
-                        <!-- Simple link -->
-                        <a href="#!">Forgot password?</a>
-                    </div>
-                    </div>
             
                     <!-- Submit button -->
-                    <button id="login-btn" type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                    <button id="login-btn" type="submit" class="btn btn-primary btn-block mb-4" onclick="HandleLogin()">Sign in</button>
             
                     <!-- Register buttons -->
                     <div class="text-center">

@@ -1,7 +1,9 @@
 .container{
     border: 1px solid grey;
     vertical-align: middle;
-    
+}
+body{
+    background-color: blue;
 }
 * {
     box-sizing: border-box;

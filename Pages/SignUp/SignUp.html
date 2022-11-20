@@ -13,35 +13,36 @@
         <div class="container">
             <h1 class="text-center">SignUp</h1>
             <div class="tab-content">
-                <form>
+                <p style="color:red ;" class="text-center" id="errorMsg"></p>
+                <form onsubmit="return HandleSignUp()">
                     <!-- Name input -->
                     <div class="form-outline mb-4">
+                        <label class="form-label" for="registerName">Name</label>
                     <input type="text" id="registerName" class="form-control" />
-                    <label class="form-label" for="registerName">Name</label>
                     </div>
             
                     <!-- Username input -->
                     <div class="form-outline mb-4">
+                        <label class="form-label" for="registerUsername">Username</label>
                     <input type="text" id="registerUsername" class="form-control" />
-                    <label class="form-label" for="registerUsername">Username</label>
                     </div>
             
                     <!-- Email input -->
                     <div class="form-outline mb-4">
+                        <label class="form-label" for="registerEmail">Email</label>
                     <input type="email" id="registerEmail" class="form-control" />
-                    <label class="form-label" for="registerEmail">Email</label>
                     </div>
             
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                    <input type="password" id="registerPassword" class="form-control" />
                     <label class="form-label" for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="form-control" />
                     </div>
             
                     <!-- Repeat Password input -->
                     <div class="form-outline mb-4">
+                        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                     <input type="password" id="registerRepeatPassword" class="form-control" />
-                    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                     </div>
             
                     <!-- Checkbox -->
@@ -54,7 +55,7 @@
                     </div>
             
                     <!-- Submit button -->
-                    <button onclick="HandleSignUp()" type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
                     <div class="text-center">
                         <p>Already have an account? <a href="../Login/Login.html">Login</a></p>
                         </div>

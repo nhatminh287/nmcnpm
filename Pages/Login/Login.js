@@ -4,14 +4,16 @@ function HandleLogin(){
     if(username=="admin@admin.com" && password=="admin"){// kiem tra tu trong database
         alert("Login sucessfully!");
         // chuyen huong toi trang chu
+        return true;
     }
     else if(username=="" || password==""){// tai khoan hoac mat khau de trong
-        document.getElementById("errorMsg")="";
-        document.getElementById("errorMsg")="You must fill in all the information!";
+        document.getElementById("errorMsg").innerHTML="";
+        document.getElementById("errorMsg").innerHTML="You must fill in all the information!";
+        return false;
     }
     else{// sai tai khoan hoac mat khau
-        document.getElementById("errorMsg")="";
-        document.getElementById("errorMsg")="Invalid Username or password!";
+        document.getElementById("errorMsg").innerHTML="";
+        document.getElementById("errorMsg").innerHTML="Invalid Username or password!";
         // clear and refocus
         document.getElementById('loginName').value="";
         document.getElementById('loginPassword').value="";

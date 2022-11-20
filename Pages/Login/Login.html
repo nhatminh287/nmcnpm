@@ -15,7 +15,7 @@
             <span style="color: blue ; font-size:large; font-weight:bold" class="text-center">CANTEEN-HCMUS</span>
             <h1 class="text-center">Login</h1>
             <div class="tab-content">
-                <form>
+                <form onsubmit="return HandleLogin()">
                     <p id="errorMsg" style="color: red ;" class="text-center"></p>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
@@ -31,7 +31,7 @@
             
             
                     <!-- Submit button -->
-                    <button id="login-btn" type="submit" class="btn btn-primary btn-block mb-4" onclick="HandleLogin()">Sign in</button>
+                    <button id="login-btn" type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
             
                     <!-- Register buttons -->
                     <div class="text-center">

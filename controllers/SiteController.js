@@ -26,6 +26,11 @@ class SiteController {
         })
     }
 
+    signup(req, res, next) {
+        res.render('SignUp.hbs', { })
+        console.log("Dang ky");
+    }
+
 }
 
 module.exports = new SiteController();

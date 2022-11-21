@@ -9,7 +9,7 @@ const session = require('express-session');
 
 
 /* const hbs = handlebars.create({
-    defaultLayout: 'main',
+    defaultLayout: 'Login',
     extname: 'hbs',
     helpers: {
         ifStr(s1, s2, options) {
@@ -54,7 +54,7 @@ app.use(session({
   //cookie: { secure: true }
 }))
 
-const hbs = handlebars.create({defaultLayout: 'Login', extname: '.hbs'});
+const hbs = handlebars.create({defaultLayout: false, extname: '.hbs'});
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');

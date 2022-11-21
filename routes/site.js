@@ -4,7 +4,7 @@ const route = express.Router();
 
 const siteController = require('../controllers/SiteController');
 
-route.post('/verifyCustomer',siteController.verifyCustomer);
+route.post('/verifyAdmin',siteController.verifyAdmin);
 route.get('/', siteController.login);
 
 module.exports = route;

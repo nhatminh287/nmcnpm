@@ -3,10 +3,10 @@ const db = require('../models/dbOperations');
 
 class SiteController {
 
-    async verifyCustomer(req, res, next) {
+    async verifyAdmin(req, res, next) {
         const username = req.body.Username;
         const password = req.body.Password;
-        const user = await db.verifyCustomer(username, password);
+        const user = await db.verifyAdmin(username, password);
         if (user) {
             console.log('Đăng nhập thành công');
             req.session.user = user;

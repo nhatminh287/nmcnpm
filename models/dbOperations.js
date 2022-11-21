@@ -1,7 +1,7 @@
 var config = require('./dbConfig');
 const sql = require('mssql/msnodesqlv8');
 
-async function verifyCustomer(username, password) {
+async function verifyAdmin(username, password) {
     try {
         let pool = await sql.connect(config);
         console.log(username)
@@ -18,5 +18,5 @@ async function verifyCustomer(username, password) {
 }
 
 module.exports = {
-    verifyCustomer,
+    verifyAdmin,
 }

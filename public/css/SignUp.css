@@ -152,3 +152,11 @@ button:hover {
 .login_link a:hover {
     text-decoration: underline;
 }
+
+/* error */
+#error {
+    position: absolute;
+    color: red;
+    right: 9px;
+    bottom: 3px;
+}

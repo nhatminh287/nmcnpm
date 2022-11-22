@@ -149,3 +149,9 @@ button:hover {
     text-decoration: underline;
 }
 
+#error {
+    position: absolute;
+    color: red;
+    right: 9px;
+    bottom: 3px;
+}

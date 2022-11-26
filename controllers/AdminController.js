@@ -22,6 +22,40 @@ class AdminController {
             recentOrder: recentOrder,
         });
     }
+
+    async showIncome(req, res) {
+        try {
+            const income = await db.income();
+            const sum = income.reduce((accumulator, object) => {
+                return accumulator + object.ThanhTien;
+              }, 0);
+            
+            res.render('admin/Income', {income: income, sum: sum})
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async showIncomeFilter(req, res) {
+        try {
+            let startDate = req.body.startdate;
+            let endDate = req.body.enddate;
+            let stDateString= startDate.toString();
+            let endDateString= endDate.toString();
+            stDateString = stDateString.replace(/\-/g, '')
+            endDateString = endDateString.replace(/\-/g, '')
+            const income = await db.incomeFilter(stDateString, endDateString);
+            const sum = income.reduce((accumulator, object) => {
+                return accumulator + object.ThanhTien;
+              }, 0);
+              
+            res.render('admin/Income', {income: income, sum: sum})
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 }
 
 module.exports = new AdminController();

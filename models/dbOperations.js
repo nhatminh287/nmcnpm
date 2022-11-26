@@ -160,6 +160,54 @@ async function getRecentOrder() {
     }
 }
 
+// Lấy tất cả các đơn hàng
+async function getOrder() {
+    try {
+        let pool = await sql.connect(config);
+        let orders = await pool.request()
+            .query(`SELECT kh.TenKH, dm.TongTien, ht.TenHT, lkh.TenLoai 
+            FROM DONMON dm, HT_THANHTOAN ht, KHACHHANG kh, LOAI_KHACHHANG lkh
+            WHERE dm.HT_THANHTOAN = ht.MAHT AND dm.MAKH = kh.MAKH and kh.LOAIKH = lkh.MALOAI`);
+        return orders.recordset;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+// Hiển thị income, truyền vào tham số là ngày bắt đầu và ngày kết thúc
+async function incomeFilter(start, end){
+    try {
+        let pool = await sql.connect(config);
+        let incomes = await pool.request()
+            /* .input('start', sql.VarChar(10), start)
+            .input('end', sql.VarChar(10), end) */
+            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.ThanhTien
+            from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp, KHACHHANG kh
+            where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP and dm.MaKH = kh.MaKH
+            and (dm.NgayLap between '${start}' and '${end}')
+            `);
+        return incomes.recordset;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+// Hiển thị tất cả income
+async function income(){
+    try {
+        let pool = await sql.connect(config);
+        let incomes = await pool.request()
+            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.ThanhTien
+            from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp, KHACHHANG kh
+            where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP and dm.MaKH = kh.MaKH     
+            `);
+        return incomes.recordset;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     verifyAdmin,
     verifySignupMaNhanVien,
@@ -171,4 +219,7 @@ module.exports = {
     getSumCustomers,
     getSumRevenue,
     getRecentOrder,
+    getOrder,
+    incomeFilter,
+    income
 }

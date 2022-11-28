@@ -208,6 +208,34 @@ async function income(){
     }
 }
 
+async function addNewUser(id, name, type, idCard, manv) {
+    try {
+        let pool = await sql.connect(config);
+        const count = await pool.request()
+        .query(`exec ThemKhachHangThanhVien '${id}', '${name}', '${type}', '${idCard}', '${manv}'`);
+
+        var check = count.rowsAffected[0]
+        
+        if (check == 1) return 1;
+        return 0;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function userCheck(id, idCard) {
+    try {
+        let pool = await sql.connect(config);
+        const user = await pool.request()
+        .query(`select kh.TenKH, kh.LoaiKH from KHACHHANG kh, THE_THANHVIEN tv where tv.MaThe = '${idCard}' and tv.MaKH = '${id}' and tv.MaKH = kh.MaKH`);
+        return user.recordset;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     verifyAdmin,
     verifySignupMaNhanVien,
@@ -221,5 +249,7 @@ module.exports = {
     getRecentOrder,
     getOrder,
     incomeFilter,
-    income
+    income,
+    addNewUser,
+    userCheck,
 }

@@ -56,6 +56,59 @@ class AdminController {
             console.log(err);
         }
     }
+
+    async showUserRegister(req, res) {
+        try {
+            res.render('admin/User');
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async userRegister(req, res) {
+        try {
+            const name = req.body.name;
+            const id = req.body.id;
+            const type = req.body.type;
+            const idCard = req.body.idCard;
+            const user = req.session.user;
+            const manv = user[0].MaNV;
+            let result = "Thêm thành công!"
+            const add = await db.addNewUser(id, name, type, idCard, manv)
+            
+            if (!add) {
+                result = "Thêm thành viên thất bại! Mã khách hàng hoặc mã thẻ đã tồn tại"
+            }
+            
+            res.render('admin/User', {result: result})
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async userCheck(req, res) {
+        try {
+            const id = req.body.id;
+            const idCard = req.body.idCard;
+            let user = await db.userCheck(id, idCard);
+            
+            user = user[0];
+            let result2 = ""
+            if(!user){
+                result2 = "Thẻ thành viên không tồn tại!"
+                res.render('admin/User', {result2: result2});
+                return;
+            }
+            res.render('admin/User', {TenKH: user.TenKH, type: user.LoaiKH, result2: result2});
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 }
+
+
 
 module.exports = new AdminController();

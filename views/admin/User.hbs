@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link rel="stylesheet" href="/css/User.css">
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.1-web/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-------------------------------NAVIGATION-------------------------------->
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-shop"></i>
+                        </span>
+                        <div class="title">
+                            <span class="title_1">US</span>
+                            <span class="title_2">Canteen</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/dashboard">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-house"></i>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-scroll"></i>
+                        </span>
+                        <span class="title">Orders</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-users"></i>
+                        </span>
+                        <span class="title">Users</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/income">
+                        <span class="icon">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                        </span>
+                        <span class="title">Income</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-box-archive"></i>
+                        </span>
+                        <span class="title">Products</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-question"></i>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-------------------------------MAIN-------------------------------->
+
+        <div class="main">
+
+            <!-------------------------TOP BAR--------------------------->
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div id="topbar-namePage">
+                    User
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user">
+                        <img src="/img/customer01.jpg" alt="">  
+                    </div>
+                    <div class="user-info">
+                        <div id="user-name">Nguyen Van A</div>
+                        <div id="user-role">Thu ngan</div>
+                    </div>
+                    <div class="log-out">
+                        <a href="#">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </div>
+                    
+                </div> 
+            </div>
+
+            <!-------------------------REGISTER FORM--------------------------->
+
+            <!-------------------------REGISTER-TAB--------------------------->
+            <div class="register-tab">
+                <button class="tablinks active">Membership Register</button>
+                <button class="tablinks ">Membership Check</button>
+            </div>
+
+            <!-------------------------REGISTER--------------------------->
+            <div id="membership-register" class="register-container tabcontent">
+                <div class="title">Membership Register</div>
+                <div class="content">
+                  <form action="/admin/user/register" method="post">
+                    <div class="input-box">
+                        <span class="details">Mã thành viên</span>
+                        <input type="text" placeholder="Mã thành viên" name="id" required>
+                      </div>
+                    <div class="input-box">
+                        <span class="details">Mã thẻ</span>
+                        <input type="text" placeholder="Mã thành viên" name="idCard" required>
+                      </div>
+                    <div class="user-details">
+                      <div class="input-box">
+                        <span class="details">Full Name</span>
+                        <input type="text" placeholder="Customer Name" name="name" required>
+                      </div>
+                
+                      <div class="input-box">
+                        <span class="details">Customer Type</span>
+                        <input type="text" placeholder="1:Giáo viên 2:Sinh viên 3:Nhân viên 4:Thành phần khác" name="type" required>
+                      </div>
+                    </div>
+        
+{{!--                     <div class="gender-details">
+                        <input type="radio" name="gender" id="dot-1">
+                        <input type="radio" name="gender" id="dot-2">
+                        <input type="radio" name="gender" id="dot-3">
+                      <span class="gender-title">Gender</span>
+                      <div class="category">
+                        <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Male</span>
+                      </label>
+                      <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">Female</span>
+                      </label>
+                      <label for="dot-3">
+                        <span class="dot three"></span>
+                        <span class="gender">Prefer not to say</span>
+                        </label>
+                      </div>
+                    </div> --}}
+        
+                    <div class="button">
+                      <input type="submit" value="Register">
+                    </div>
+                    <p style="color: red; font-size: 16px">{{result}}</p>
+                  </form>
+                </div>
+            </div>
+
+            <!-------------------------CHECK--------------------------->
+            <div id="membership-check" class="register-container tabcontent">
+                <div class="title">Membership Check</div>
+                <div class="content">
+                  <form action="/admin/usercheck" method="post">
+        
+                    <div class="user-details">
+                      <div class="input-box">
+                        <span class="details">Mã thẻ</span>
+                        <input type="text" placeholder="Customer Name" name="idCard" required>
+                      </div>
+                      <div class="input-box">
+                        <span class="details">Mã khách hàng</span>
+                        <input type="text" placeholder="Customer ID" name="id" required>
+                      </div>
+            
+                    </div>
+        
+                    <div class="button">
+                      <input type="submit" value="Check">
+                    </div>
+                  </form>
+                  <div style="color: red; font-size: 16px; display: flex; justify-content: space-around;">
+                      <p >Tên khách hàng: {{TenKH}}</p>
+                      <p> Customer Type: {{type}}</p>                      
+                  </div>
+                  
+                </div>
+                
+            </div>
+            <p style="color: red; font-size: 16px; margin-top: 5px; margin-left: 15px;">{{result2}}</p>
+        </div>
+    </div>
+    <script src="/js/User.js"></script>
+</body>
+</html>

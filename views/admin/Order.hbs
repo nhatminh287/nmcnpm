@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <link rel="stylesheet" href="/css/Order.css">
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.1-web/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-------------------------------NAVIGATION-------------------------------->
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-shop"></i>
+                        </span>
+                        <div class="title">
+                            <span class="title_1">US</span>
+                            <span class="title_2">Canteen</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/dashboard">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-house"></i>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-scroll"></i>
+                        </span>
+                        <span class="title">Orders</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-users"></i>
+                        </span>
+                        <span class="title">Users</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                        </span>
+                        <span class="title">Income</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-box-archive"></i>
+                        </span>
+                        <span class="title">Products</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-question"></i>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-------------------------------MAIN-------------------------------->
+
+        <div class="main">
+
+            <!-------------------------TOP BAR--------------------------->
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div id="topbar-namePage">
+                    Order
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user">
+                        <img src="/img/customer01.jpg" alt="">
+                    </div>
+                    <div class="user-info">
+                        <div id="user-name">Nguyen Van A</div>
+                        <div id="user-role">Thu ngan</div>
+                    </div>
+                    <div class="log-out">
+                        <a href="#">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <!------------------------- ORDER --------------------------->
+
+            <!------------------- ORDER - TAB ---------------------->
+            <div class="tab">
+                <button class="tablinks active">Client Order</button>
+                
+            </div>
+
+            <!------------------- CLIENT - ORDER ------------------->
+    
+            <div id="client-order" class="order-container tabcontent">
+                <div class="title">Order Products</div>
+                <div class="content">
+                    <div class="order">
+                        <p>Select your Products to complete the Order</p>
+    
+                        <div id="order-list" class="input-box">
+    
+                            <!--Add Order Products-->
+    
+                        </div>
+    
+                        <button id="add-btn" onclick="AddProduct()">Add Products</button>
+                        <div id="check-membership">
+                            <label for="membership">Customers with membership card ?</label>
+                            <input type="checkbox" id="membership-checkbox" name="membership">
+                        </div>
+                        
+                        <div id="order-summary">
+                            <button id="paid-confirm-btn" onclick="CalculateOrder()">Paid Confirm</button>
+                            <p id="order-total"></p>
+                            <p id="discount"></p>
+                            <p id="final-sum"></p>
+                        </div>
+
+                        <div class="payment-btn">
+                            <button id="cash-pay-btn" onclick="HandleCashPay()">Pay With Cash</button>
+                            <button id="online-pay-btn" onclick="HandleOnlinePay()">Pay Online</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Add product tab: Hidden by default, open when click "Add product" button  -->
+            <!-- Display list of product to choose -->
+            <div id="product-list" class="tabcontent">
+                <!-- Render by JS -->
+
+                <div class="row" id="product-list-wrapper">
+                    <!--
+                    <div class="column">
+                        <img class="input-item-img" src="../example img/flour.png">
+                        <p class="input-item-name">Flour (1Kg)</p>
+                        <p class="input-item-price">50000<span>đ</span></p>
+                    </div>
+                    <div class="column">
+                        <img class="input-item-img" src="../example img/bread.png">
+                        <p class="input-item-name">Bread</p>
+                        <p class="input-item-price">50000<span>đ</span></p>
+                    </div>
+                    <div class="column">
+                        <img class="input-item-img" src="../example img/rice.png">
+                        <p class="input-item-name">Rice (10Kg)</p>
+                        <p class="input-item-price">50000<span>đ</span></p>
+                    </div>
+                    <div class="column">
+                        <img class="input-item-img" src="../example img/sugar.png">
+                        <p class="input-item-name">Sugar (1Kg)</p>
+                        <p class="input-item-price">50000<span>đ</span></p>
+                    </div>
+                    -->
+                    {{#each product}}
+                        <div class="column">
+                            <img class="input-item-img" src="{{product.LinkHinhAnh}}">
+                            <p class="input-item-name">{{product.TenSP}}</p>
+                            <p class="input-item-price">{{product.GiaTien}}</p>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div id="online-payment" class="order-container tabcontent">
+                <h2>Order successfully, Please choose a way to complete your Payment</h2>
+                <h3>Momo: 0123789456 - Nguyen Van A</h3>
+                <h3>BIDV: 012343545456 - Nguyen Van A</h3>
+                <h3>VCB: 456756765765 - Nguyen Van A</h3>
+            </div>
+
+           
+        </div>
+    </div>
+    <script src="/js/Order.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,694 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --blue: #090E87;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative; 
+    width: 100%;  
+}
+
+/* ------------------------ Navigation ------------------------*/
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--white);
+    border-left: 10px solid var(--white);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active {
+    width: 80px;
+}
+ 
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+} 
+
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--blue);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li:nth-child(1) a {
+    display: flex;
+    align-items: center;
+}
+
+.navigation ul li:nth-child(1) a .title {
+    padding-top: 10px;
+}
+
+.navigation ul li:nth-child(1) .title_2 {
+    color: #F55959;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--white);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul li a .icon i {
+    font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* ------------------------ Main ------------------------*/
+
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+    border-left: 1px solid var(--blue);
+}
+
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 10px;
+    background-color: #090E87;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+#topbar-namePage {
+    position: relative;
+    color: white;
+    width: auto;
+    height: auto;
+    margin: auto auto;
+    font-size: 1.8rem;
+}
+
+
+.topbar-right {
+    flex-basis: 20%;
+    display: flex;
+    align-self: center;
+    color: white;
+    justify-content: left;
+    height: 60px;
+    align-items: center;
+}
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-info {
+    padding-left: 10px;
+    line-height: 24px;  
+}
+
+.user-info #user-role {
+    font-size: 14px;
+}
+
+.topbar-right .log-out {
+    margin-left: 20px;
+}
+
+.topbar-right .log-out a {
+    color: white;
+}
+/*--------------------Tab-----------------*/
+
+.tab {
+  position: relative;
+  width: 100%;
+  margin: 0 50px 50px 50px;
+}
+
+.tab button {
+  font-size: 18px;
+  font-weight: 500;
+  height: 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: var(--white);
+  padding: 0 20px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-right: 5px;
+}
+
+.tab button:hover {
+  cursor: pointer;
+}
+
+.tab .active{
+  color: white;
+  background-color: var(--blue);
+}
+
+/*------------------------------- INPUT FIELD ------------------------------- */
+
+/*--------------------- ORDER PRODUCTS ---------------------*/
+
+.order-container {
+  position: relative;
+  background: white;
+  width: auto;
+  min-height: 300px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+  margin: 50px;
+  border: 1px solid var(--blue);
+}
+
+.order-container .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.order-container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.order-container .content {
+  padding: 20px;
+}
+
+.order {
+  margin-top: 50px;
+}
+
+.order p {
+  margin-bottom: 20px;
+  color: var(--blue);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#client-order .order button {
+  width: 300px;
+  height: 45px;
+  margin: 35px auto;
+}
+
+#client-order .order #cash-pay-btn , #client-order .order #online-pay-btn {
+  width: 150px;
+  height: 45px;
+  margin: 35px auto;
+  font-size: 16px;
+}
+
+#client-order button {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+#client-order .input-item button {
+  margin-left: 5px;
+  border-radius: 0;
+  opacity: 0.7;
+}
+
+#client-order #add-btn {
+  background-color: var(--blue);
+  opacity: 0.7;
+}
+
+#paid-confirm-btn {
+  background-color: red;
+  opacity: 0.7;
+}
+
+#client-order .payment-btn {
+  text-align: right;
+}
+
+#client-order #cash-pay-btn{
+  background-color: red;
+  opacity: 0.7;
+  display: none;
+}
+
+#client-order #online-pay-btn{
+  background-color: #177a4a;
+  opacity: 0.7;
+  display: none;
+}
+
+#client-order h1 {
+  color: #177a4a;
+}
+
+
+#check-membership {
+  font-size: 18px;
+  display: none;
+}
+
+#order-summary {
+  display: none;
+}
+
+#order-total, #discount, #final-sum {
+  display: none;
+}
+
+#client-order .order #membership-checkbox {
+  margin-left: 10px;
+  transform: scale(1.5);
+}
+
+#order-total , #discount , #final-sum{
+  text-align: end;
+}
+
+#client-order button:hover, #client-order #add-btn:hover , 
+#client-order #paid-confirm-btn:hover,#client-order #cash-pay-btn:hover,
+#client-order #online-pay-btn:hover{
+  opacity: 1;
+}
+
+/*-------Add Ordered Products-------*/
+
+#product-list .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  margin-left: 50px;
+}
+
+.input-item input{
+  height: 45px;
+  width: 100px;
+  outline: none;
+  font-size: 16px;
+  padding-left: 20px;
+  border: 1px solid black;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+
+}
+
+.input-item input:focus{
+  border-color: var(--blue);
+  border-width: 1px;
+}
+
+.input-item button {
+  width: 50px;
+  background-color: red;
+}
+
+.input-item input{
+  height: 40px;
+}
+
+.input-item .price_info {
+  display: flex;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  justify-content: center;
+}
+
+#order-list {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+@media(max-width: 584px){
+  .order-container{
+    max-width: 100%;
+  }
+}
+
+/*--------------------- ORDER PRODUCTS LIST ---------------------*/
+
+.row {
+  position: relative;
+  width: auto;
+  min-height: 300px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 50px;
+  border: 1px solid var(--blue);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.column .input-item-name {
+  margin-top: 10px;
+}
+
+.column .price_info {
+  display: flex;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.column:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#online-payment {
+  text-align: center;
+}
+
+#online-payment h2{
+  margin-bottom: 20px;
+  color: rgb(6, 193, 6);
+}
+
+#online-payment h3{
+  font-weight: 400;
+  line-height: 45px;
+}
+/*-------------------------History table-------------------------*/
+
+/*----Date picker------*/
+.time-picker{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 400px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+  margin: 50px;
+  height: auto;
+}
+
+.time-picker p {
+  margin-bottom: 20px;
+  color: var(--blue);
+  font-size: 18px;
+}
+
+.time-picker button{
+  background-color: #090E87;
+  color: #fff;
+  width: 60%;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 20px;
+  border: none;
+  align-self: center;
+
+}
+.time-picker button:hover{
+  background-color: #2d7dd9;
+  cursor: pointer;
+}
+
+.choose-time {
+  height: auto;
+}
+
+.time_label {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.time_label .start-label {
+  color: green;
+}
+
+.time_label .end-label {
+  color: tomato;
+}
+
+.time_choose {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+/* Style the time picker*/
+::-webkit-datetime-edit { padding: 5px; }
+::-webkit-datetime-edit-fields-wrapper { background: rgb(255, 255, 255); }
+::-webkit-datetime-edit-text {  padding: 0 0.3em; }
+::-webkit-datetime-edit-month-field {  }
+::-webkit-datetime-edit-day-field { }
+::-webkit-datetime-edit-year-field {  }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { font-size: large; }
+
+.details {
+  position: relative;
+  width: 100%;
+}
+
+.details .history-table {
+  position: relative;
+  display: grid;
+  width: auto;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+  margin: 50px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.details table thead td {
+  font-weight: 600;
+}
+
+.details .history-table table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .history-table table tr:last-child {
+  border-bottom: none;
+}
+
+.details .history-table table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.details .history-table table tr td {
+  padding: 10px;
+}
+
+.details .history-table table tr td:last-child {
+  text-align: end;
+}
+
+.details .history-table table tr td:nth-child(2) {
+  text-align: center;
+}
+
+.details .history-table table tr td:nth-child(3) {
+  text-align: center;
+}
+
+
+/*------------------------------- RESPONSIVE ------------------------------- */
+@media (max-width: 991px) {
+    .navigation {
+      left: -300px;
+    }
+    .navigation.active {
+      width: 300px;
+      left: 0;
+    }
+    .main {
+      width: 100%;
+      left: 0;
+    }
+    .main.active {
+      left: 300px;
+    }
+    .cardBox {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+  
+  @media (max-width: 768px) {
+    .details {
+      grid-template-columns: 1fr;
+    }
+    .history-table {
+      overflow-x: auto;
+    }
+}
+  
+  @media (max-width: 480px) {
+    .cardBox {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .cardHeader h2 {
+      font-size: 20px;
+    }
+    .user {
+      min-width: 40px;
+    }
+    .navigation {
+      width: 100%;
+      left: -100%;
+      z-index: 1000;
+    }
+    .navigation.active {
+      width: 100%;
+      left: 0;
+    }
+    .toggle {
+      z-index: 10001;
+    }
+    .main.active .toggle {
+      color: #fff;
+      position: fixed;
+      right: 0;
+      left: initial;
+    }
+}
+

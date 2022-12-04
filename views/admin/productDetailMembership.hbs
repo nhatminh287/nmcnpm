@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income</title>
-    <link rel="stylesheet" href="/css/Income.css">
+    <title>Order</title>
+    <link rel="stylesheet" href="/css/productDetail.css">
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.1-web/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
 
@@ -16,7 +18,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="../Dashboard.html">
                         <span class="icon">
                             <i class="fa-solid fa-shop"></i>
                         </span>
@@ -28,7 +30,7 @@
                 </li>
 
                 <li>
-                    <a href="/admin/dashboard">
+                    <a href="../Dashboard.html">
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-house"></i>
                         </span>
@@ -37,7 +39,7 @@
                 </li>
 
                 <li>
-                    <a href="/admin/orderAsk">
+                    <a href="orderAsk.html">
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-scroll"></i>
                         </span>
@@ -46,7 +48,7 @@
                 </li>
 
                 <li>
-                    <a href="/admin/user">
+                    <a href="../User.html">
                         <span class="icon">
                             <i class="fa-solid fa-users"></i>
                         </span>
@@ -55,7 +57,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../Income.html">
                         <span class="icon">
                             <i class="fa-solid fa-hand-holding-dollar"></i>
                         </span>
@@ -64,7 +66,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../Product.html">
                         <span class="icon">
                             <i class="fa-solid fa-box-archive"></i>
                         </span>
@@ -73,7 +75,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../Help.html">
                         <span class="icon">
                             <i class="fa-solid fa-question"></i>
                         </span>
@@ -87,90 +89,55 @@
 
         <div class="main">
 
-            <!------------TOP BAR------------>
+            <!-------------------------TOP BAR--------------------------->
             <div class="topbar">
                 <div class="toggle">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div id="topbar-namePage">
-                    Income
+                    Order
                 </div>
 
                 <div class="topbar-right">
                     <div class="user">
-                        <img src="/img/customer01.jpg" alt="">  
+                        <img src="/img/customer01.jpg" alt="">
                     </div>
-                    <div class="user-info">
+                   {{!--  <div class="user-info">
                         <div id="user-name">Nguyen Van A</div>
                         <div id="user-role">Thu ngan</div>
-                    </div>
+                    </div> --}}
                     <div class="log-out">
-                        <a href="#">
+                        <a href="../Login.html">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </div>
-                    
-                </div> 
-            </div>
 
-            <!-------------------Time Picker--------------------->
-            <div class="time-picker">
-                <p>Choose start date and end date to see incomes:</p>
-                <div class="choose_time">
-                    <div class="time_label">
-                        <label class="start-label" for="startdate">Start Date</label>
-                        <label class="end-label" for="enddate">End Date</label>
-                    </div>
-                    <form method="post" action="/admin/incomeFilter" class="time_choose">
-                        <input id="start" type="date" placeholder="start date" name="startdate">
-                        <input id="end" type="date" placeholder="end date" name="enddate">
-                        <button type="submit" > Check </button>
-                    </form>
                 </div>
-                
             </div>
-            <!-------------------Income table--------------------->
-            <div class="details">
-                <div class="income-table">
-                    <div class="cardHeader">
-                        <h2>Incomes</h2>
+            <!------------------------- ORDER --------------------------->
+            <div class="product-detail">
+                <div class="title">Product Detail</div>
+                <button id="back-btn" onclick="window.location.href='orderList.html'">&larr; Back to Product list</button>
+                <div class="product-info" id="product-info-wrapper">
+                    <img src={{productDetail.LinkHinhAnh}} alt="rice">
+                    <div class="product-info-data">
+                        <p>{{productDetail.TenSP}}</p>
+                        <p>{{productDetail.GiaBan}}<span>đ</span></p>
+                        <p>{{productDetail.TinhTrang}}</p>
+                        <form id="quantity" method="post" action="/admin/addToCart/{{id}}/{{productDetail.MaSP}}">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" name="soluong" placeholder="Quantity">
+                            <button type="submit" id="add-cart-btn">&#10010; Add to cart</button>
+                        </form>
+                        <p style="color: red; font-size: 16px;">{{status}}</p>
                     </div>
 
-                    <table id="table">
-                        <thead>
-                            <tr>
-                                <td>Date</td>
-                                <td>Product's Name</td>
-                                <td>Payment</td>
-                                <td>Income</td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                          
-                            {{#each income}}
-                            <tr><td>{{this.NgayLap}}</td>
-                                <td>{{this.TenSP}}</td>
-                                <td>{{this.TenHT}}</td>
-                                <td>{{this.ThanhTien}}</td>
-                            </tr>
-                            {{/each}}
-
-                             <tr id="total-income">
-                                <td>Total Incomes: </td>
-                                <td></td>
-                                <td></td>
-                                <td class="moneySum">{{sum}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>   
+                </div>
             </div>
+
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script src="/js/Income.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js" integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/Orders_sub/orderSub.js"></script>
 </body>
+
 </html>

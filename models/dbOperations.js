@@ -236,6 +236,98 @@ async function userCheck(id, idCard) {
     }
 }
 
+async function product() {
+    try {
+        let pool = await sql.connect(config);
+        const product = await pool.request()
+        .query(`select * from SANPHAM_TIEUTHU`);
+        return product.recordset;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function getProductFromId(id) {
+    try {
+        let pool = await sql.connect(config);
+        const product = await pool.request()
+        .query(`select * from SANPHAM_TIEUTHU where MaSP = '${id}'`);
+        // console.log(product);
+        return product.recordset;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function addTocart(masp, soluong) {
+    try {
+        // console.log("ma san pham la ", masp)
+        // console.log("so luong la ", soluong);
+        let pool = await sql.connect(config);
+        const product = await pool.request()
+        .query(`exec ThemChiTietGioHang '0', '${masp}', ${soluong}`);
+        // console.log("cart là", product);
+        return product.rowsAffected[0];
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function addTocartMembership(id, masp, soluong) {
+    try {
+        let pool = await sql.connect(config);
+        const product = await pool.request()
+        .query(`exec ThemChiTietGioHang '${id}', '${masp}', ${soluong}`);
+        // console.log("cart là", product);
+        return product.rowsAffected[0];
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+// Xem thông tin giỏ hàng
+async function getCart(makh) {
+    try {
+        let pool = await sql.connect(config);
+        const product = await pool.request()
+        .query(`select sp.TenSP, ct.SoLuong, sp.GiaTien from CHITIETGIOHANG ct, SANPHAM_TIEUTHU sp where MaKH = '${makh}' and ct.MaSP = sp.MaSP`);
+        // console.log("cart là", product);
+        return product.recordset;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function removeAll() {
+    try {
+        let pool = await sql.connect(config);
+        const deleteCart = await pool.request()
+        .query(`delete from CHITIETGIOHANG where MaKH = '0'`);
+        console.log("delete Cart: ", deleteCart);
+        return deleteCart.rowsAffected;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function removeAllMembership(makh) {
+    try {
+        let pool = await sql.connect(config);
+        const deleteCart = await pool.request()
+        .query(`delete from CHITIETGIOHANG where MaKH = '${makh}'`);
+        console.log("delete Cart memebership: ", deleteCart);
+        return deleteCart.rowsAffected;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {
     verifyAdmin,
     verifySignupMaNhanVien,
@@ -252,4 +344,11 @@ module.exports = {
     income,
     addNewUser,
     userCheck,
+    product,
+    getProductFromId,
+    addTocart,
+    addTocartMembership,
+    getCart,
+    removeAll,
+    removeAllMembership
 }

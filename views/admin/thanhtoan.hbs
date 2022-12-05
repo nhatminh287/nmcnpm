@@ -18,7 +18,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="../Dashboard.html">
+                    <a style="cursor: pointer;" href="/admin/dashboard">
                         <span class="icon">
                             <i class="fa-solid fa-shop"></i>
                         </span>
@@ -30,7 +30,7 @@
                 </li>
 
                 <li>
-                    <a href="../Dashboard.html">
+                    <a href="/admin/dashboard">
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-house"></i>
                         </span>
@@ -39,7 +39,7 @@
                 </li>
 
                 <li>
-                    <a href="orderAsk.html">
+                    <a href="/admin/orderAsk">
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-scroll"></i>
                         </span>
@@ -48,7 +48,7 @@
                 </li>
 
                 <li>
-                    <a href="../User.html">
+                    <a href="/admin/user">
                         <span class="icon">
                             <i class="fa-solid fa-users"></i>
                         </span>
@@ -57,7 +57,7 @@
                 </li>
 
                 <li>
-                    <a href="../Income.html">
+                    <a href="/admin/income">
                         <span class="icon">
                             <i class="fa-solid fa-hand-holding-dollar"></i>
                         </span>
@@ -150,8 +150,9 @@
                         <p id="order-total">Total: {{phisanpham}} đ</p>
                     </div>
                     <div class="payment-btn">
-                        <button id="cash-pay-btn">Pay With Cash</button>
-                        <button id="online-pay-btn">Pay Online</button>
+                        <a href="/admin/payment/1" id="cash-pay-btn">Pay With Cash</a>
+                        
+                        <a href="/admin/payment/2" id="online-pay-btn">Pay Online</a>
                     </div>
                     <p style="color: red; font-size: 16px;">{{status}}</p>
                 </div>

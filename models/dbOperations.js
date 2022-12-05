@@ -294,7 +294,7 @@ async function getCart(makh) {
     try {
         let pool = await sql.connect(config);
         const product = await pool.request()
-        .query(`select sp.TenSP, ct.SoLuong, sp.GiaTien from CHITIETGIOHANG ct, SANPHAM_TIEUTHU sp where MaKH = '${makh}' and ct.MaSP = sp.MaSP`);
+        .query(`select sp.MaSP, sp.TenSP, ct.SoLuong, sp.GiaTien from CHITIETGIOHANG ct, SANPHAM_TIEUTHU sp where MaKH = '${makh}' and ct.MaSP = sp.MaSP`);
         // console.log("cart là", product);
         return product.recordset;
     }
@@ -328,6 +328,50 @@ async function removeAllMembership(makh) {
         console.log(err);
     }
 }
+async function addDonHang(MaKH, MaThuNgan, TongTien, htThanhtoan) {
+    try {
+        let pool = await sql.connect(config);
+        // insert into Don Hang
+        const addDonHang = await pool.request()
+        .query(`insert into DONMON(MaKH, MaThuNgan, NgayLap, TongTien, HT_ThanhToan) values (${MaKH}, '${MaThuNgan},  CAST(GETDATE() AS DATE), ${TongTien}, '${htThanhtoan}'`);
+        console.log("add Don Hang: ", addDonHang);
+        return addDonHang.rowsAffected;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function addChiTietDonHang(masp, soluong, gia) {
+    try {
+        let pool = await sql.connect(config);
+        // insert into chitietdonhang
+        const add = await pool.request()
+        .query(`EXEC ThemChiTietDonMon '${masp}', ${soluong}, ${gia}`);
+        console.log("add Chi tiet Don Hang: ", add);
+        return addDonHang.rowsAffected;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+// Cập nhật lại lượng sản phẫm đã bán và đang bán
+async function updateSanPham(masp, soluong) {
+    try {
+        let pool = await sql.connect(config);
+        
+        const dangban = await pool.request()
+        .query(`update SANPHAM_TIEUTHU set SoLuongBan -= ${soluong} where MaSP = '${masp}'`);
+
+        const daban = await pool.request()
+        .query(`exec LuongSanPhamDaBan '${masp}', ${soluong}`);
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {
     verifyAdmin,
     verifySignupMaNhanVien,
@@ -350,5 +394,8 @@ module.exports = {
     addTocartMembership,
     getCart,
     removeAll,
-    removeAllMembership
+    removeAllMembership,
+    addChiTietDonHang,
+    updateSanPham,
+    addDonHang,
 }

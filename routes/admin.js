@@ -41,6 +41,9 @@ route.post('/addToCart/:id/:masp', adminController.addToCartMemberShip);
 // payment for membership
 route.get('/paymentMembership/:id', adminController.showPaymentMembership);
 
+// xulithanhtoan
+route.post('/paymentMembership/:makh/:htThanhtoan', adminController.paymentMembership);
+
 route.delete('/removeAllMembership', adminController.removeAllMembership);
 
 // No membership
@@ -55,6 +58,9 @@ route.post('/addToCart/:id', adminController.addToCart);
 
 // thanhtoan
 route.get('/payment', adminController.showPayment);
+
+// xulithanhtoan
+route.post('/payment/:htThanhtoan', adminController.payment);
 
 route.delete('/removeAll', adminController.removeAll)
 

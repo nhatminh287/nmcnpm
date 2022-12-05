@@ -326,6 +326,60 @@ class AdminController {
         }
     }
 
+    async payment(req, res) {
+        try {
+            console.log("DDax vao dc day");
+            const htThanhtoan = req.params.htThanhtoan
+            const giohang = await db.getCart('0')
+            let sum = giohang
+            let phisanpham = 0;
+            sum.forEach(function (item, index) {
+                phisanpham += item.GiaTien * item.SoLuong;
+            });
+            const user = req.session.user;
+            const manv = user[0].MaNV;
+            // insert Don Hang
+            await db.addDonHang('null', manv, phisanpham, htThanhtoan)
+            
+            giohang.forEach(function (item, index) {
+                // thêm chi tiết đơn hàng
+                db.addChiTietDonHang(item.MaSP, item.SoLuong, item.GiaTien);
+                // Cập nhật lượng sản phẩm
+                db.updateSanPham(item.MaSP, item.SoLuong)
+            });
+            res.redirect('/admin/orderList')
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+    async paymentMembership(req, res) {
+        try {
+            const htThanhtoan = req.params.htThanhtoan
+            const makh = req.params.makh;
+            const giohang = await db.getCart(makh)
+            let sum = giohang
+            let phisanpham = 0;
+            sum.forEach(function (item, index) {
+                phisanpham += item.GiaTien * item.SoLuong;
+            });
+            const user = req.session.user;
+            const manv = user[0].MaNV;
+            // insert Don Hang
+            await db.addDonHang(makh, manv, phisanpham, htThanhtoan)
+            
+            giohang.forEach(function (item, index) {
+                // thêm chi tiết đơn hàng
+                db.addChiTietDonHang(item.MaSP, item.SoLuong, item.GiaTien);
+                // Cập nhật lượng sản phẩm
+                db.updateSanPham(item.MaSP, item.SoLuong)
+            });
+            res.redirect('/admin/orderList/' + makh)
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 }
 
 

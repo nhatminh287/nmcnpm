@@ -332,8 +332,25 @@ async function addDonHang(MaKH, MaThuNgan, TongTien, htThanhtoan) {
     try {
         let pool = await sql.connect(config);
         // insert into Don Hang
+        console.log("MaKH LA: ", MaKH);
+        console.log("MaThuNgan: ", MaThuNgan);
+        console.log("TongTien: ", TongTien);
+        console.log("Hinh thuc ", htThanhtoan);
         const addDonHang = await pool.request()
-        .query(`insert into DONMON(MaKH, MaThuNgan, NgayLap, TongTien, HT_ThanhToan) values (${MaKH}, '${MaThuNgan},  CAST(GETDATE() AS DATE), ${TongTien}, '${htThanhtoan}'`);
+        .query(`insert into DONMON(MaKH, MaThuNgan, NgayLap, TongTien, HT_ThanhToan) values (${MaKH}, '${MaThuNgan}',  CAST(GETDATE() AS DATE), ${TongTien}, '${htThanhtoan}')`);
+        console.log("add Don Hang: ", addDonHang);
+        return addDonHang.rowsAffected;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+async function addDonHangMembership(MaKH, MaThuNgan, TongTien, htThanhtoan) {
+    try {
+        let pool = await sql.connect(config);
+        // insert into Don Hang
+        const addDonHang = await pool.request()
+        .query(`insert into DONMON(MaKH, MaThuNgan, NgayLap, TongTien, HT_ThanhToan) values ('${MaKH}', '${MaThuNgan}',  CAST(GETDATE() AS DATE), ${TongTien}, '${htThanhtoan}')`);
         console.log("add Don Hang: ", addDonHang);
         return addDonHang.rowsAffected;
     }
@@ -346,6 +363,9 @@ async function addChiTietDonHang(masp, soluong, gia) {
     try {
         let pool = await sql.connect(config);
         // insert into chitietdonhang
+        console.log("soluong la: ", soluong);
+        console.log("gia la:", gia);
+        console.log("máp la: ", masp);
         const add = await pool.request()
         .query(`EXEC ThemChiTietDonMon '${masp}', ${soluong}, ${gia}`);
         console.log("add Chi tiet Don Hang: ", add);
@@ -398,4 +418,5 @@ module.exports = {
     addChiTietDonHang,
     updateSanPham,
     addDonHang,
+    addDonHangMembership,
 }

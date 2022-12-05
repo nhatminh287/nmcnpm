@@ -328,7 +328,6 @@ class AdminController {
 
     async payment(req, res) {
         try {
-            console.log("DDax vao dc day");
             const htThanhtoan = req.params.htThanhtoan
             const giohang = await db.getCart('0')
             let sum = giohang
@@ -366,7 +365,7 @@ class AdminController {
             const user = req.session.user;
             const manv = user[0].MaNV;
             // insert Don Hang
-            await db.addDonHang(makh, manv, phisanpham, htThanhtoan)
+            await db.addDonHangMembership(makh, manv, phisanpham, htThanhtoan)
             
             giohang.forEach(function (item, index) {
                 // thêm chi tiết đơn hàng

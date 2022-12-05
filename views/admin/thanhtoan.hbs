@@ -150,9 +150,9 @@
                         <p id="order-total">Total: {{phisanpham}} đ</p>
                     </div>
                     <div class="payment-btn">
-                        <a href="/admin/payment/1" id="cash-pay-btn">Pay With Cash</a>
+                        <form action="/admin/payment/1" method="post"><button type="submit" id="cash-pay-btn">Pay With Cash</button></form>
                         
-                        <a href="/admin/payment/2" id="online-pay-btn">Pay Online</a>
+                        <form action="/admin/payment/2" method="post"><button type="submit" id="online-pay-btn">Pay Online</button></form>
                     </div>
                     <p style="color: red; font-size: 16px;">{{status}}</p>
                 </div>

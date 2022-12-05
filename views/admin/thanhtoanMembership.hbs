@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order</title>
-    <link rel="stylesheet" href="/css/Orders_sub/thanhtoan.css">
+    <link rel="stylesheet" href="/css/thanhtoan.css">
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.1-web/css/all.min.css">
 </head>
 
@@ -117,7 +117,7 @@
             <!------------------------- ORDER --------------------------->
             <div class="product-detail">
                 <div class="title">Order Payment</div>
-                <button id="back-btn" onclick="window.location.href='orderList.html'">&larr; Back to Order List</button>
+                <a id="back-btn" href="/admin/orderList/{{id}}">&larr; Back to Order List</a>
                 
                 <div class="details">
                     <div class="income-table">
@@ -151,8 +151,8 @@
                         <p id="final-sum">Final: {{discount}} đ</p>
                     </div>
                     <div class="payment-btn">
-                        <a href="/admin/paymentMembership/{{id}}/1" id="cash-pay-btn">Pay With Cash</a>
-                        <a href="/admin/paymentMembership/{{id}}/2" id="online-pay-btn">Pay Online</a>
+                        <form action="/admin/paymentMembership/{{id}}/1" method="post"><button id="cash-pay-btn">Pay With Cash</button></form>
+                        <form action="/admin/paymentMembership/{{id}}/2" method="post"><button id="online-pay-btn">Pay Online</button></form>
                     </div>
                     <p style="color: red; font-size: 16px;">{{status}}</p>
                 </div>

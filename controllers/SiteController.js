@@ -37,7 +37,7 @@ class SiteController {
     async addAccount(req, res, next) {
         const manv = req.body.manv;
         const username = req.body.username;
-        const phone = req.body.password;
+        const password = req.body.password;
         let nhanvien = await db.verifySignupMaNhanVien(manv);
         let tk = await db.verifySignupTaiKhoan(username);
         if (nhanvien == null) {

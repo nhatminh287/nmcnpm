@@ -75,5 +75,6 @@ route.post('/export', adminController.export)
 route.get('/importHistory', adminController.importHistory)
 route.get('/exportHistory', adminController.exportHistory)
 route.get('/khohang', adminController.khohang)
+route.get('/help', adminController.help)
 
 module.exports = route;

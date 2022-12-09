@@ -21,6 +21,7 @@
     "express": "4.17.1",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
+    "moment": "^2.29.4",
     "msnodesqlv8": "^2.7.0",
     "mssql": "^9.0.1"
   }

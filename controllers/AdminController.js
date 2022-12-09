@@ -1,3 +1,4 @@
+var moment = require('moment');
 
 const db = require('../models/dbOperations');
 
@@ -27,7 +28,7 @@ class AdminController {
         try {
             const income = await db.income();
             const sum = income.reduce((accumulator, object) => {
-                return accumulator + object.ThanhTien;
+                return accumulator + object.GiaBan;
               }, 0);
             
             res.render('admin/Income', {income: income, sum: sum})
@@ -47,7 +48,7 @@ class AdminController {
             endDateString = endDateString.replace(/\-/g, '')
             const income = await db.incomeFilter(stDateString, endDateString);
             const sum = income.reduce((accumulator, object) => {
-                return accumulator + object.ThanhTien;
+                return accumulator + object.GiaBan;
               }, 0);
               
             res.render('admin/Income', {income: income, sum: sum})
@@ -434,6 +435,11 @@ class AdminController {
     async importHistory(req, res){
         try{
             const importHistory = await db.importProductHistory()
+            importHistory.forEach(function (item, index){
+
+                item.NgayNhap = moment(item.NgayNhap).utc().format('YYYY-MM-DD')
+            }
+            )
             res.render('admin/importHistory',{import: importHistory})
             console.log( importHistory);
         }
@@ -445,6 +451,11 @@ class AdminController {
     async exportHistory(req, res){
         try{
             const exportHistory = await db.exportProductHistory()
+            exportHistory.forEach(function (item, index){
+
+                item.NgayXuat = moment(item.NgayXuat).utc().format('YYYY-MM-DD')
+            }
+            )
             res.render('admin/exportHistory',{export: exportHistory})
         }
         catch(err){
@@ -456,6 +467,16 @@ class AdminController {
         try{
             const khohang = await db.khohang()
             res.render('admin/khohang',{khohang: khohang})
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    async help(req, res){
+        try{
+            
+            res.render('admin/help')
         }
         catch(err){
             console.log(err);

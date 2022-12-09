@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order</title>
-    <link rel="stylesheet" href="/css/orderMembership.css">
+    <title>Help</title>
+    <link rel="stylesheet" href="/css/Help.css">
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.1-web/css/all.min.css">
 </head>
 
 <body>
+
     <div class="container">
 
         <!-------------------------------NAVIGATION-------------------------------->
@@ -18,7 +19,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="../Dashboard.html">
+                    <a href="/admin/dashboard">
                         <span class="icon">
                             <i class="fa-solid fa-shop"></i>
                         </span>
@@ -30,7 +31,7 @@
                 </li>
 
                 <li>
-                    <a href="../Dashboard.html">
+                    <a href="/admin/dashboard">
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-house"></i>
                         </span>
@@ -39,7 +40,7 @@
                 </li>
 
                 <li>
-                    <a href="orderAsk.html">
+                    <a href="/admin/oderAsk">
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-scroll"></i>
                         </span>
@@ -48,7 +49,7 @@
                 </li>
 
                 <li>
-                    <a href="../User.html">
+                    <a href="/admin/user">
                         <span class="icon">
                             <i class="fa-solid fa-users"></i>
                         </span>
@@ -57,7 +58,7 @@
                 </li>
 
                 <li>
-                    <a href="../Income.html">
+                    <a href="/admin/income">
                         <span class="icon">
                             <i class="fa-solid fa-hand-holding-dollar"></i>
                         </span>
@@ -66,7 +67,7 @@
                 </li>
 
                 <li>
-                    <a href="../Product.html">
+                    <a href="/admin/product">
                         <span class="icon">
                             <i class="fa-solid fa-box-archive"></i>
                         </span>
@@ -75,7 +76,7 @@
                 </li>
 
                 <li>
-                    <a href="../Help.html">
+                    <a href="">
                         <span class="icon">
                             <i class="fa-solid fa-question"></i>
                         </span>
@@ -89,57 +90,78 @@
 
         <div class="main">
 
-            <!-------------------------TOP BAR--------------------------->
+            <!------------TOP BAR------------>
             <div class="topbar">
                 <div class="toggle">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div id="topbar-namePage">
-                    Order
+                    Help
                 </div>
 
                 <div class="topbar-right">
                     <div class="user">
                         <img src="/img/customer01.jpg" alt="">
                     </div>
-                    
+                    <div class="user-info">
+                        <div id="user-name">Nguyen Van A</div>
+                        <div id="user-role">Thu ngan</div>
+                    </div>
                     <div class="log-out">
-                        <a href="../Login.html">
+                        <a href="Login.html">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </div>
-
                 </div>
             </div>
-            <!------------------------- ORDER --------------------------->
-
-            <div id="membership-check" class="membership-input">
-                <div class="title">Membership Information</div>
-                <div class="content">
-                  <form id="membership-info" action="/admin/checkOrderMembership" method="post">
-        
-                    <div class="user-details">
-                      <div class="input-box">
-                        <span class="details">Customer ID</span>
-                        <input id="customerId" type="text" placeholder="Customer ID" name="id" required>
-                      </div>
-                      <div class="input-box">
-                        <span class="details">Membership ID</span>
-                        <input id="membershipId" type="text" placeholder="Membership ID" name="idCard" required>
-                      </div>
+            <!---------------FAQs---------------->
+            <div class="faq">
+                <section class="faq-container">
+                    <div class="faq-item">
+                        <!-- faq question -->
+                        <h1 class="faq-page">About Us?</h1>
+                        <!-- faq answer -->
+                        <div class="faq-body">
+                            <p>This website is designed by Group 23 - NMCNPM<br>
+                                Group's Members:<br>
+                                20120451 - Bui Van Danh<br>
+                                19120585 - Nguyen Hai Nhat Minh<br>
+                                20120355 - Dinh Minh Quan<br>
+                            </p>
+                        </div>
                     </div>
-        
-                    <div class="button">
-                      <input type="submit" value="Continue &#8811;"/>
+                    <div class="faq-item">
+                        <!-- faq question -->
+                        <h1 class="faq-page">Contact Information?</h1>
+                        <!-- faq answer -->
+                        <div class="faq-body">
+                            <p>Contact us at for more information:<br>
+                                Email: abcxyz@gmail.com<br>
+                                Hotline: 19251043<br>
+                            </p>
+                        </div>
                     </div>
-                  </form>
-                  <p style="color: red; font-size: 16px;">{{result2}}</p>
-                </div>
+                    <div class="faq-item">
+                        <!-- faq question -->
+                        <h1 class="faq-page">What is the purpose of this website?</h1>
+                        <!-- faq answer -->
+                        <div class="faq-body">
+                            <p>This website is designed to help manage the Canteen, following is things that you can do with this website:<br>
+                                + See the overall state of Canteen with <strong>Dashboard</strong>.<br>
+                                + Manage client's order with <strong>Order</strong>.<br>
+                                + Manage your income with <strong>Income</strong>.<br>
+                                + Manage import/export state of your products with <strong>Product</strong>.<br>
+                                + Provide client with discount by register them as Membership in <strong>User</strong>.<br>
+                                And some more useful features!
+                            </p>
+                        </div>
+                    </div>
+                </section>
             </div>
-           
         </div>
     </div>
-    <script src="/js/Orders_sub/orderSub.js"></script>
+
+    <script src="/js/Help.js"></script>
 </body>
 
 </html>

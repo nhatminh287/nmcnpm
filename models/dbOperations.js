@@ -181,7 +181,7 @@ async function incomeFilter(start, end){
         let incomes = await pool.request()
             /* .input('start', sql.VarChar(10), start)
             .input('end', sql.VarChar(10), end) */
-            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.ThanhTien
+            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.GiaBan
             from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp, KHACHHANG kh
             where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP and dm.MaKH = kh.MaKH
             and (dm.NgayLap between '${start}' and '${end}')
@@ -197,7 +197,7 @@ async function income(){
     try {
         let pool = await sql.connect(config);
         let incomes = await pool.request()
-            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.ThanhTien
+            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.GiaBan
             from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp, KHACHHANG kh
             where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP and dm.MaKH = kh.MaKH     
             `);
@@ -470,7 +470,7 @@ async function khohang() {
     try {
         let pool = await sql.connect(config);
         const khohang = await pool.request()
-        .query(`select * from HANGHOA`);
+        .query(`select h.TenHang, h.SoLuongTonKho, sp.SoLuongBan from HANGHOA h, SANPHAM_TIEUTHU sp where h.MaHang = sp.MaHangHoa`);
         return khohang.recordset;
     }
     catch (err) {

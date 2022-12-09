@@ -95,7 +95,7 @@
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div id="topbar-namePage">
-                    Order
+                    Warehouse
                 </div>
 
                 <div class="topbar-right">
@@ -107,21 +107,35 @@
                         <div id="user-role">Thu ngan</div>
                     </div>
                     <div class="log-out">
-                        <a href="../Login.html">
+                        <a href="/admin">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </div>
 
                 </div>
             </div>
-            <!------------------------- ORDER --------------------------->
-            <div class="order-ask">
-                <p>Do you want to process with Membership?</p>
-                <div class="selection">
-                    <a href="/admin/orderList" id="orderAsk-no">No</a>
-                    <a href="/admin/orderMembership" id="orderAsk-yes">Yes</a>
-                </div>
-            </div>
+                 <table>
+                <thead>
+                    <tr>
+                        <td>STT</td>
+                        <td>Tên hàng</td>
+                        <td>Số lượng đang bán</td>
+                        <td>Số lượng tồn kho</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    
+                    {{#each khohang}}
+                        <tr>                           
+                            <td><script>document.write({{@index}} + 1)</script></td>
+                            <td>{{this.TenHang}}</td>
+                            <td>{{this.SoLuongBan}}</td>
+                            <td>{{this.SoLuongTonKho}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
     <script src="/js/Orders_sub/orderSub.js"></script>

@@ -392,6 +392,91 @@ async function updateSanPham(masp, soluong) {
         console.log(err);
     }
 }
+
+async function getProduct(id, name) {
+    try {
+        let pool = await sql.connect(config);
+        console.log(id );
+        console.log("name ", name);
+        const product = await pool.request()
+        .query(`select * from HANGHOA where MaHang = '${id}' and TenHang='${name}'`);
+        return product.recordset;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function importProduct(id, soluong){
+    try {
+        let pool = await sql.connect(config);
+        
+        await pool.request()
+        .query(`update HANGHOA set SoLuongTonKho+= ${soluong} where MaHang = '${id}'`);
+
+        await pool.request()
+        .query(`insert into CHITIET_NHAP_HANGHOA values('${id}', ${soluong}, cast(getdate() as date), cast(getdate() as time), null)`);
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function exportProduct(id, soluong){
+    try {
+        let pool = await sql.connect(config);
+        
+        await pool.request()
+        .query(`update HANGHOA set SoLuongTonKho-= ${soluong} where MaHang = '${id}'`);
+        await pool.request().query(`update SANPHAM_TIEUTHU set SoLuongBan+= ${soluong} where MaHangHoa = '${id}'`);
+
+        await pool.request()
+        .query(`insert into HANGHOA_XUAT values('${id}', ${soluong}, cast(getdate() as date), cast(getdate() as time))`);
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function importProductHistory(){
+    try {
+        let pool = await sql.connect(config);
+        const importHistory = await pool.request()
+        .query(`select h.TenHang, ct.NgayNhap, ct.SoLuongNhap from HANGHOA h, CHITIET_NHAP_HANGHOA ct
+        where ct.MaHang = h.MaHang`);
+        return importHistory.recordset;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function exportProductHistory(){
+    try {
+        let pool = await sql.connect(config);
+        const exportHistory = await pool.request()
+        .query(`select h.TenHang, ct.NgayXuat, ct.SoLuongXuat from HANGHOA h, HANGHOA_XUAT ct
+        where ct.MaHang = h.MaHang`);
+        return exportHistory.recordset;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function khohang() {
+    try {
+        let pool = await sql.connect(config);
+        const khohang = await pool.request()
+        .query(`select * from HANGHOA`);
+        return khohang.recordset;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {
     verifyAdmin,
     verifySignupMaNhanVien,
@@ -419,4 +504,10 @@ module.exports = {
     updateSanPham,
     addDonHang,
     addDonHangMembership,
+    getProduct,
+    importProduct,
+    exportProduct,
+    importProductHistory,
+    exportProductHistory,
+    khohang,
 }

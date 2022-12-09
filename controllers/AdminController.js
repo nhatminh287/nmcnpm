@@ -379,6 +379,88 @@ class AdminController {
             console.log(err);
         }
     }
+
+    async getProductPage(req, res) {
+        try {
+            res.render('admin/Product')
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async import(req, res) {
+        try {
+           const id = req.body.id;
+           const name = req.body.name;
+           const soluong = req.body.soluong;
+           const product = await db.getProduct(id, name);
+            console.log(product);
+           if(!product[0]) {
+            let err = "Sản phẩm không hợp lệ!"
+            res.render('admin/product', {status: err})
+            return;
+           }
+           await db.importProduct(id, soluong);
+           res.render('admin/product', {status: "Bạn đã nhập hàng thành công!"})
+           return;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async export(req, res) { 
+        try {
+            const id = req.body.id;
+            const name = req.body.name;
+            const soluong = req.body.soluong;
+            const product = await db.getProduct(id, name);
+             console.log(product);
+            if(!product[0]) {
+             let err = "Sản phẩm không hợp lệ!"
+             res.render('admin/product', {status: err})
+             return;
+            }
+            await db.exportProduct(id, soluong);
+            res.render('admin/product', {status: "Bạn đã xuất hàng thành công!"})
+            return;
+         }
+         catch (err) {
+             console.log(err);
+         }
+    }
+
+    async importHistory(req, res){
+        try{
+            const importHistory = await db.importProductHistory()
+            res.render('admin/importHistory',{import: importHistory})
+            console.log( importHistory);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    async exportHistory(req, res){
+        try{
+            const exportHistory = await db.exportProductHistory()
+            res.render('admin/exportHistory',{export: exportHistory})
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    async khohang(req, res){
+        try{
+            const khohang = await db.khohang()
+            res.render('admin/khohang',{khohang: khohang})
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
 }
 
 

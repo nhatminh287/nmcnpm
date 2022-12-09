@@ -65,5 +65,15 @@ route.post('/payment/:htThanhtoan', adminController.payment);
 route.delete('/removeAll', adminController.removeAll)
 
 
+// Kho hàng
+route.get('/product', adminController.getProductPage);
+// Nhập hàng
+route.post('/import', adminController.import)
+// Xuất hàng
+route.post('/export', adminController.export)
+//
+route.get('/importHistory', adminController.importHistory)
+route.get('/exportHistory', adminController.exportHistory)
+route.get('/khohang', adminController.khohang)
 
 module.exports = route;

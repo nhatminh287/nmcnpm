@@ -278,6 +278,16 @@ body {
   padding: 20px;
 }
 
+.import-container a,
+.export-container a {
+  text-decoration: none;
+}
+
+.import-container a:hover,
+.export-container a:hover {
+  color: red;
+}
+
 .content form .product-details {
   display: flex;
   flex-wrap: wrap;

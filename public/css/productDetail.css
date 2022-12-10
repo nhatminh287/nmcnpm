@@ -230,9 +230,11 @@ body {
 
 .product-info img {
   margin: 0 50px;
+  width: 60%;
 }
 
 .product-info-data {
+  width: 40%;
   display: flex;
   width: 200px;
   flex-direction: column;
@@ -258,13 +260,13 @@ body {
 .product-info-data input {
   margin-left: 10px;
   height: 30px;
-  width: 90px;
+  width: 80px;
   outline: none;
   text-align: center;
   font-weight: 600;
   padding-left: 5px;
   color: red;
-  font-size: 14px;
+  font-size: 10px;
   border: 1px solid black;
 }
 
@@ -275,6 +277,7 @@ body {
   opacity: 0.7;
   border: none;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 #add-cart-btn:hover {

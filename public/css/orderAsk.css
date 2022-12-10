@@ -236,17 +236,18 @@ body {
   align-self: flex-end;
 }
 
-.selection button {
+.selection a {
   padding: 10px 20px;
   border-radius: 5px;
+  text-decoration: none;
 }
 
-.selection button:first-child {
+.selection a:first-child {
   background-color: white;
   border: 1px solid gray;
 }
 
-.selection button:last-child {
+.selection a:last-child {
   background-color: var(--blue);
   border: 1px solid var(--blue);
   color: white;
@@ -254,16 +255,52 @@ body {
   opacity: 0.7;
 }
 
-.selection button:first-child:hover {
+.selection a:first-child:hover {
   background-color: rgb(230, 230, 230);
   cursor: pointer;
 }
 
-.selection button:last-child:hover {
+.selection a:last-child:hover {
   background-color: var(--blue);
   opacity: 1;
   cursor: pointer;
 }
+
+/*--------------------WAREHOUSE-------------------*/
+
+.main table {
+  position: relative;
+  width: auto;
+  min-width: 900px;
+  min-height: 400px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 50px auto;
+  border-collapse: collapse;
+}
+
+.main table thead td {
+  font-weight: 600;
+}
+
+.main table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.main table tr:last-child {
+  border-bottom: none;
+}
+
+.main table tr td {
+  padding: 10px;
+}
+
+.main table tr td {
+  text-align: center;
+}
+
 
 /*------------------------------- RESPONSIVE ------------------------------- */
 @media (max-width: 991px) {

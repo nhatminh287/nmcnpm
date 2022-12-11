@@ -292,7 +292,23 @@ form .input-box span.details{
   margin-bottom: 10px;
 }
 
-.user-details .input-box input{
+.input-box {
+  margin-bottom: 10px;
+}
+
+.input-box input {
+  height: 45px;
+  width: 30%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 20px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.user-details input {
   height: 45px;
   width: 100%;
   outline: none;

@@ -218,6 +218,7 @@ body {
   position: relative;
   margin-left: 50px;
   margin-top: 20px;
+  margin-bottom: 20px;
   color: var(--blue);
 }
 
@@ -231,6 +232,7 @@ body {
   cursor: pointer;
   padding: 10px 20px;
   background-color: white;
+  text-decoration: none;
 }
 
 #back-btn:hover {

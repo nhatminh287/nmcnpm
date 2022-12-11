@@ -226,8 +226,8 @@ body {
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
-    cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-decoration: none;
 }
 
 .cardBox .card .numbers {
@@ -241,6 +241,7 @@ body {
     color: var(--black2);
     font-size: 1.1rem;
     margin-top: 5px;
+    text-decoration: none;
 }
 
 .cardBox .card .iconBx {
@@ -250,6 +251,7 @@ body {
 
 .cardBox .card:hover {
     background: var(--blue);
+
 }
 
 .cardBox .card:hover .numbers,
@@ -275,7 +277,6 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 20px;
     margin: 50px;
-    border: 1px solid var(--blue);
 }
 
 #myChart {

@@ -119,8 +119,8 @@
                     <img src={{productDetail.LinkHinhAnh}} alt="rice">
                     <div class="product-info-data">
                         <p>{{productDetail.TenSP}}</p>
-                        <p>{{productDetail.GiaBan}}<span>đ</span></p>
-                        <p>{{productDetail.TinhTrang}}</p>
+                        <p>{{productDetail.GiaTien}}<span>đ</span></p>
+                        <p>Trạng Thái: {{productDetail.TinhTrang}}</p>
                         <form id="quantity" method="post" action="/admin/addToCart/{{id}}/{{productDetail.MaSP}}">
                             <label for="quantity">Quantity:</label>
                             <input type="number" name="soluong" placeholder="Quantity">

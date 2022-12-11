@@ -157,7 +157,7 @@ class AdminController {
         try {
             const id = req.params.id;
             const productDetail = await db.getProductFromId(id);
-            console.log("detail là", productDetail);
+            // console.log("detail là", productDetail);
             res.render('admin/productDetail', {productDetail: productDetail[0]});
         }
         catch (err) {
@@ -230,11 +230,9 @@ class AdminController {
         try {
             const id = req.body.id;
             const idCard = req.body.idCard;
-            const product = await db.product();
-            console.log("ID LA", id);
-            console.log("ma the la ", idCard);
+            const product = await db.product();                     
             let user = await db.userCheck(id, idCard);
-            console.log("User thanhf vien la ", user);
+            
             user = user[0];
             let result2 = ""
             if(!user){

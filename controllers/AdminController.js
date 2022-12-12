@@ -30,7 +30,11 @@ class AdminController {
             const sum = income.reduce((accumulator, object) => {
                 return accumulator + object.GiaBan;
               }, 0);
-            
+            income.forEach(function (item, index){
+
+                item.NgayLap = moment(item.NgayLap).utc().format('YYYY-MM-DD')
+            }
+            )
             res.render('admin/Income', {income: income, sum: sum})
         }
         catch (err) {
@@ -50,7 +54,11 @@ class AdminController {
             const sum = income.reduce((accumulator, object) => {
                 return accumulator + object.GiaBan;
               }, 0);
-              
+            income.forEach(function (item, index){
+
+                item.NgayLap = moment(item.NgayLap).utc().format('YYYY-MM-DD')
+            }
+            )
             res.render('admin/Income', {income: income, sum: sum})
         }
         catch (err) {

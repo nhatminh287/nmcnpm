@@ -44,7 +44,7 @@ route.get('/paymentMembership/:id', adminController.showPaymentMembership);
 // xulithanhtoan
 route.post('/paymentMembership/:makh/:htThanhtoan', adminController.paymentMembership);
 
-route.delete('/removeAllMembership', adminController.removeAllMembership);
+route.post('/removeAllMembership', adminController.removeAllMembership);
 
 // No membership
 //orderList for no membership
@@ -62,7 +62,7 @@ route.get('/payment', adminController.showPayment);
 // xulithanhtoan
 route.post('/payment/:htThanhtoan', adminController.payment);
 
-route.delete('/removeAll', adminController.removeAll)
+route.post('/removeAll', adminController.removeAll)
 
 
 // Kho hàng

@@ -141,8 +141,14 @@
                             </tbody>
                         </table>
                     </div>
-                    <button id="delete-all-btn">Remove all</button>
-                    <hr>
+                    
+                    {{!-- <a id="delete-all-btn" data-method="delete" data-token="{{csrf_token()}}" href="/admin/removeAll">Remove all</a> --}}
+                    <form action="/admin/removeAll" method="POST">
+                        
+                        <button id="delete-all-btn" type="submit">Remove all</button>
+                    </form>
+                   
+                    
                     <div id="order-summary">
                         <p id="order-total">Total: {{phisanpham}} đ</p>
                     </div>
@@ -158,6 +164,7 @@
         </div>
     </div>
     <script src="/js/Income.js"></script>
+    
 </body>
 
 </html>

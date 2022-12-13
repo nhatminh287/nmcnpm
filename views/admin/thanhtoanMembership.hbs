@@ -140,7 +140,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <button id="delete-all-btn">Remove all</button>
+                    {{!-- <button id="delete-all-btn">Remove all</button> --}}
+                    <form action="/admin/removeAllMembership" method="POST">
+                        
+                        <button id="delete-all-btn" type="submit" >Remove all</button>
+                    </form>
                     <hr>
                     <div id="order-summary">
                         <p id="order-total">Total: {{phisanpham}} đ</p>

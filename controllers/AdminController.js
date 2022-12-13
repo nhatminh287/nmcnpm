@@ -290,7 +290,8 @@ class AdminController {
             
             const deleteCart = await db.removeAll();
             if (deleteCart) {
-                res.redirect('admin/payment')
+                res.redirect('/admin/payment')
+                return;
             }
             else {
                 const giohang = await db.getCart('0')
@@ -302,7 +303,7 @@ class AdminController {
                 });
                 res.render('admin/thanhtoan', {giohang: giohang, phisanpham: phisanpham, status: "Xoá sản phẩm không thành công!"});
             }
-            res.render('admin/productDetailMembership', {productDetail: productDetail[0], id: id});
+            // res.render('admin/productDetailMembership', {productDetail: productDetail[0], id: id});
         }
         catch (err) {
             console.log(err);

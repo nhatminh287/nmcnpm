@@ -399,7 +399,7 @@ async function getProduct(id, name) {
         console.log(id );
         console.log("name ", name);
         const product = await pool.request()
-        .query(`select * from HANGHOA where MaHang = '${id}' and TenHang='${name}'`);
+        .query(`select * from HANGHOA where MaHang = '${id}' and TenHang = N'${name}'`);
         return product.recordset;
     }
     catch (err) {

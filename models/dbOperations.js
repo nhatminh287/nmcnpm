@@ -136,7 +136,7 @@ async function getSumRevenue() {
     try {
         let pool = await sql.connect(config);
         const request = await pool.request();
-        let doanhthu = await request.query('SELECT sum(DoanhThu) as sum FROM DOANHTHU_BANHANG_THEONGAY');
+        let doanhthu = await request.query('SELECT sum(TongTien) as sum FROM DONMON');
         if (doanhthu.recordset.length == 0) return null;
         return doanhthu.recordset;
     }
@@ -181,9 +181,9 @@ async function incomeFilter(start, end){
         let incomes = await pool.request()
             /* .input('start', sql.VarChar(10), start)
             .input('end', sql.VarChar(10), end) */
-            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.GiaBan
-            from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp, KHACHHANG kh
-            where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP and dm.MaKH = kh.MaKH
+            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, (ct.GiaBan*ct.SoLuong) as GiaBan
+            from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp
+            where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP 
             and (dm.NgayLap between '${start}' and '${end}')
             `);
         return incomes.recordset;
@@ -197,9 +197,9 @@ async function income(){
     try {
         let pool = await sql.connect(config);
         let incomes = await pool.request()
-            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, ct.GiaBan
-            from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp, KHACHHANG kh
-            where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP and dm.MaKH = kh.MaKH     
+            .query(`select dm.NgayLap, sp.TenSP, ht.TenHT, (ct.GiaBan*ct.SoLuong) as GiaBan
+            from DONMON dm, HT_THANHTOAN ht, CHITIET_DONMON ct, SANPHAM_TIEUTHU sp
+            where dm.HT_ThanhToan = ht.MaHT and dm.MaDon = ct.MaDon and ct.MaSP = sp.MaSP    
             `);
         return incomes.recordset;
     }
